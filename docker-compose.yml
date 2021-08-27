@@ -16,8 +16,11 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: user@email.com
       PGADMIN_DEFAULT_PASSWORD: 1234
+    # volumes:
+    #   - /home/diego/code/elixir/pgadmin4:/var/lib/pgadmin
     ports:
       - '8080:80'
 
 volumes:
   database-data:
+  # pgadmin4:
