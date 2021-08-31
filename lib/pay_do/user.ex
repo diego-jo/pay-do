@@ -3,10 +3,12 @@ defmodule PayDo.User do
   import Ecto.Changeset
 
   alias Ecto.Changeset
+  alias PayDo.Account
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @required_params [:name, :age, :email, :password, :nickname]
 
+  # params = %{name: "diego", age: 40, email: "user@email.com", password: "123456", nickname: "md_1"}
   schema "users" do
     field :name, :string
     field :age, :integer
@@ -14,6 +16,7 @@ defmodule PayDo.User do
     field :password, :string, virtual: true
     field :password_hash, :string
     field :nickname, :string
+    has_one :account, Account
 
     timestamps()
   end
