@@ -2,6 +2,7 @@ defmodule PayDo.Accounts.Transaction do
   alias Ecto.Multi
   alias PayDo.Accounts.Operation
   alias PayDo.Repo
+  alias PayDo.Accounts.Transactions.Response, as: TransactionResponse
 
   def call(%{"from" => from_id, "to" => to_id, "value" => value}) do
     deposit_params = build_params(to_id, value)
@@ -21,7 +22,7 @@ defmodule PayDo.Accounts.Transaction do
         {:error, reason}
 
       {:ok, %{withdraw: from_account, deposit: to_account}} ->
-        {:ok, %{from_account: from_account, to_account: to_account}}
+        {:ok, TransactionResponse.build(from_account, to_account)}
     end
   end
 end

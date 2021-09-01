@@ -2,6 +2,7 @@ defmodule PayDoWeb.AccountsController do
   use PayDoWeb, :controller
 
   alias PayDo.Account
+  alias PayDo.Accounts.Transactions.Response, as: TransactionResponse
 
   action_fallback PayDoWeb.FallbackController
 
@@ -22,7 +23,7 @@ defmodule PayDoWeb.AccountsController do
   end
 
   def transaction(conn, params) do
-    with {:ok, %{} = transaction} <- PayDo.transaction(params) do
+    with {:ok, %TransactionResponse{} = transaction} <- PayDo.transaction(params) do
       conn
       |> put_status(:ok)
       |> render("transaction.json", transaction: transaction)

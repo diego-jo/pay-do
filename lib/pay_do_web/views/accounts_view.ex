@@ -1,5 +1,6 @@
 defmodule PayDoWeb.AccountsView do
   alias PayDo.Account
+  alias PayDo.Accounts.Transactions.Response, as: TransactionResponse
 
   def render("update.json", %{account: %Account{id: id, balance: balance}}) do
     %{
@@ -12,7 +13,7 @@ defmodule PayDoWeb.AccountsView do
   end
 
   def render("transaction.json", %{
-        transaction: %{from_account: from_account, to_account: to_account}
+        transaction: %TransactionResponse{from_account: from_account, to_account: to_account}
       }) do
     %{
       message: "Transaction done successfully",
