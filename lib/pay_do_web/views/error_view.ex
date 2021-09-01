@@ -22,6 +22,11 @@ defmodule PayDoWeb.ErrorView do
     %{message: translate_errors(changeset)}
   end
 
+  # TODO: Improve error messages to be more accurate
+  def render("400.json", %{result: message}) do
+    %{message: message}
+  end
+
   defp translate_errors(changeset) do
     traverse_errors(changeset, fn {msg, opts} ->
       Regex.replace(~r"%{(\w+)}", msg, fn _, key ->
