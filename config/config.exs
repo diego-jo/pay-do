@@ -22,6 +22,10 @@ config :pay_do, PayDo.Repo,
   migration_primary_key: [type: :binary_id],
   migration_foreign_key: [type: :binary_id]
 
+config :pay_do, :basic_auth,
+  username: "rick",
+  password: "sanchez123"
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

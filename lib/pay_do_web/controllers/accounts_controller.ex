@@ -23,6 +23,9 @@ defmodule PayDoWeb.AccountsController do
   end
 
   def transaction(conn, params) do
+    # task = Task.async(fn -> PayDo.transaction(params) end) # Cria um processo concorrente para executar uma tarefa
+    # Task.await(task) aguarda o valor de retorno
+
     with {:ok, %TransactionResponse{} = transaction} <- PayDo.transaction(params) do
       conn
       |> put_status(:ok)

@@ -1,5 +1,5 @@
 defmodule PayDo.NumbersTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   alias PayDo.Numbers
 
